@@ -16,3 +16,18 @@ We usually tag branches with some convention name in order to trigger actions on
 ### Convention
 In this project, the feature branches have been named : 'ANDX-name-of-feature'
 The goal is to have a unique 'X' id for every feature so we keep track of who is working on which issue and what is the status (When working in agile team with a kanban board)
+
+## Architecture
+### MVVM
+The application uses an MVVM architecture which is the most common one (in Android apps), the basic components of this architecture are :
+- The model: Containing the data of the application
+- The view: What will be shown on the screen, what the user will interact with
+- The viewmodel: acting like a bridge between the model and the view. It will be able to get the data and transform it so it can be used by the view. The view will be subscribed to it to be updated when needed.
+
+MVVM is the recommended pattern for Android app.
+
+### Modules
+In order to respect the "separation of concerns" concept, this app is separated in 3 modules :
+- The data module, exposing repositories and handling how the data is retrieved.
+- The domain module, supposed to encapsulate business logic (not so important in this current app as it is very simple but still!).
+- The ui module, displaying the data on the screen, containing all the Android specific related code.
