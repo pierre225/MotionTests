@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <dimen name="square_size_px" tools:ignore="PxUsage">70px</dimen>
 
     <!-- Common values of spacing/text size that can be reused -->
     <dimen name="spacing_xx_small">2dp</dimen>
@@ -17,6 +19,4 @@
     <dimen name="text_large">16sp</dimen>
     <dimen name="text_x_large">24sp</dimen>
 
-    <dimen name="song_item_height">90dp</dimen>
-    <dimen name="splash_icon_size">100dp</dimen>
 </resources>

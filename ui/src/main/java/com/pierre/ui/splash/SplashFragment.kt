@@ -3,7 +3,9 @@ package com.pierre.ui.splash
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
+import androidx.navigation.fragment.findNavController
 import androidx.viewbinding.ViewBinding
+import com.pierre.ui.R
 import com.pierre.ui.base.BaseFragment
 import com.pierre.ui.databinding.FragmentSplashBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -23,5 +25,8 @@ class SplashFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        // todo check if splash is needed to preload
+        findNavController().navigate(R.id.splashToMotion)
     }
 }

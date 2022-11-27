@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--  ideally we defined a palette and reuse the same colors as much as possible  -->
-    <color name="white">#FFFFFF</color>
-    <color name="black">#000000</color>
+    <color name="background_color">#FFFFFF</color>
+    <color name="square_color">#000000</color>
+    <color name="buttons_background_color">#AAAAAA</color>
+    <color name="button_icon_color">#000000</color>
+    <color name="exceeded_bound_outline_color">#ff5555</color>
 
 </resources>
