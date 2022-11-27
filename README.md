@@ -1,4 +1,4 @@
-## Hours spent : 0
+## Hours spent : 2
 
 # The Moving Square app !
 
@@ -31,3 +31,24 @@ In order to respect the "separation of concerns" concept, this app is separated 
 - The data module, exposing repositories and handling how the data is retrieved.
 - The domain module, supposed to encapsulate business logic (not so important in this current app as it is very simple but still!).
 - The ui module, displaying the data on the screen, containing all the Android specific related code.
+
+
+
+# WIP
+
+todo : 
+model : two models -> entry contains a list of position and a boolean (exceeded bounds)
+Room
+persistance
+display data
+save data
+Create a module for this specific test as we could import it and others
+
+Nice to have :
+Some analytics with firebase or other
+
+Don't forget to test at the end :
+Make sure we track the finger x,y and not the square xy
+Adaptive theme
+rotation screen behavior
+

@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--  Dark mode colors -->
+    <color name="background_color">#000000</color>
+    <color name="buttons_background_color">#444444</color>
+    <color name="square_color">#FFFFFF</color>
+    <color name="button_icon_color">#FFFFFF</color>
+
 </resources>
