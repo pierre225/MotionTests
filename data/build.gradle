@@ -9,7 +9,10 @@ dependencies {
     kapt libs.hilt.compiler
     implementation libs.hilt.android
 
-    testImplementation libs.testing.mockk
-    testImplementation libs.testing.junit
-    testImplementation libs.testing.coroutines
+    kapt libs.room.compiler
+    implementation libs.room.runtime
+    implementation libs.room.ktx
+    implementation libs.room.paging
+
+    implementation libs.gson
 }
