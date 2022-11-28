@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:animateLayoutChanges="true"
+    android:background="@color/background_color"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/spacing_normal"
+        android:padding="@dimen/spacing_x_large"
+        android:text="@string/list_of_tests"
+        android:textColor="@color/main_color"
+        android:textSize="@dimen/text_x_large" />
+
+    <Button
+        android:id="@+id/movingSquare"
+        android:layout_width="@dimen/button_width"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/spacing_normal"
+        android:background="@color/buttons_background_color"
+        android:padding="@dimen/spacing_x_large"
+        android:text="@string/moving_square" />
+
+    <Button
+        android:id="@+id/test2"
+        android:layout_width="@dimen/button_width"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/spacing_normal"
+        android:background="@color/buttons_background_color"
+        android:padding="@dimen/spacing_x_large"
+        android:text="@string/test2" />
+
+    <Button
+        android:id="@+id/test3"
+        android:layout_width="@dimen/button_width"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/spacing_normal"
+        android:background="@color/buttons_background_color"
+        android:padding="@dimen/spacing_x_large"
+        android:text="@string/test3" />
+
+</LinearLayout>

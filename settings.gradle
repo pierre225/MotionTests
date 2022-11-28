@@ -17,8 +17,8 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "MovingSquare"
+rootProject.name = "MotionTests"
 include ':app'
-include ':ui'
-include ':domain'
-include ':data'
+include ':square-ui'
+include ':square-domain'
+include ':square-data'
