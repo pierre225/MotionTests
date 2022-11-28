@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
 import android.widget.Toast
+import androidx.fragment.app.viewModels
 import androidx.viewbinding.ViewBinding
 import com.pierre.ui.base.BaseFragment
 import com.pierre.ui.databinding.FragmentMotionBinding
@@ -14,6 +15,8 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MotionFragment : BaseFragment() {
+
+    private val motionViewModel: MotionViewModel by viewModels()
 
     private lateinit var binding: FragmentMotionBinding
 
@@ -47,7 +50,7 @@ class MotionFragment : BaseFragment() {
             when (event.actionMasked) {
                 MotionEvent.ACTION_DOWN -> onActionDown(event)
                 MotionEvent.ACTION_MOVE -> onActionMove(event)
-                MotionEvent.ACTION_UP -> onActionMove(event)
+                MotionEvent.ACTION_UP -> onActionUp()
                 else -> false
             }
         }
@@ -57,6 +60,8 @@ class MotionFragment : BaseFragment() {
     private fun onActionDown(event: MotionEvent): Boolean {
         dX = binding.square.x - event.rawX
         dY = binding.square.y - event.rawY
+
+        motionViewModel.startCapture()
         return true
     }
 
@@ -68,6 +73,8 @@ class MotionFragment : BaseFragment() {
         val newY = event.rawY + dY
         if (newX in MIN_X..MAX_X) binding.square.x = newX else exceededBounds()
         if (newY in MIN_Y..MAX_Y) binding.square.y = newY else exceededBounds()
+
+        motionViewModel.addPosition(newX, newY, event.rawX, event.rawY)
         return true
     }
 
@@ -76,13 +83,24 @@ class MotionFragment : BaseFragment() {
     private fun exceededBounds() {
         if (!animation.hasStarted() || animation.hasEnded()) {
             binding.exceededBoundOutline.startAnimation(animation)
+            motionViewModel.exceededBounds()
         }
     }
 
     // todo comment
-    private fun onActionUp(event: MotionEvent): Boolean {
-        // todo save
+    private fun onActionUp(): Boolean {
+        motionViewModel.stopCapture()
         return true
+    }
+
+    override fun onPause() {
+        motionViewModel.stopCapture()
+        super.onPause()
+    }
+
+    override fun onDestroy() {
+        motionViewModel.stopCapture()
+        super.onDestroy()
     }
 
     private fun centerSquare() {
@@ -99,7 +117,7 @@ class MotionFragment : BaseFragment() {
     }
 
     private fun displayData() {
-        Toast.makeText(context, "wip", Toast.LENGTH_LONG).show()
+        context?.also { motionViewModel.show(it) }
     }
 
     // todo could be nice to also record that the gesture went out of screen

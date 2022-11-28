@@ -1,4 +1,4 @@
-## Hours spent : 2
+## Hours spent : 4
 
 # The Moving Square app !
 
@@ -32,6 +32,13 @@ In order to respect the "separation of concerns" concept, this app is separated 
 - The domain module, supposed to encapsulate business logic (not so important in this current app as it is very simple but still!).
 - The ui module, displaying the data on the screen, containing all the Android specific related code.
 
+## Libraries
+
+### Hilt
+Hilt (dagger) for the dependency injection, reducing boilerplate code and making testing easier. (Alternative I used : Koin)
+
+### Room
+A local storing library allowing us to use SQL database for our local data. My implementation may not be perfect as I never had the opportunity to use it before!
 
 
 # WIP
@@ -46,6 +53,8 @@ Create a module for this specific test as we could import it and others
 
 Nice to have :
 Some analytics with firebase or other
+considering we save the motion we could have a feature to replay a motion
+The test module could be in another repo and retrieved via maven
 
 Don't forget to test at the end :
 Make sure we track the finger x,y and not the square xy
