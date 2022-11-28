@@ -1,6 +1,13 @@
 ## Hours spent : 4
 
-# The Moving Square app !
+# The Motion Tests app !
+This application contains a list of motion tests that can be performed by a user !
+Each test is in its own module so the host app can import it or not. (For this demo, only the moving square test is available)
+
+## The Moving Square test
+The moving square test lets the user move a 70*70px square on the screen while recording:
+* The positions of touches points
+* Whether or not the square touched a border of the screen
 
 ## Working flow
 ### Git Flow
@@ -27,7 +34,7 @@ The application uses an MVVM architecture which is the most common one (in Andro
 MVVM is the recommended pattern for Android app.
 
 ### Modules
-In order to respect the "separation of concerns" concept, this app is separated in 3 modules :
+In order to respect the "separation of concerns" concept and to make the tests easier, the Moving square app is separated in 3 modules :
 - The data module, exposing repositories and handling how the data is retrieved.
 - The domain module, supposed to encapsulate business logic (not so important in this current app as it is very simple but still!).
 - The ui module, displaying the data on the screen, containing all the Android specific related code.
@@ -44,12 +51,7 @@ A local storing library allowing us to use SQL database for our local data. My i
 # WIP
 
 todo : 
-model : two models -> entry contains a list of position and a boolean (exceeded bounds)
-Room
-persistance
 display data
-save data
-Create a module for this specific test as we could import it and others
 
 Nice to have :
 Some analytics with firebase or other

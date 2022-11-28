@@ -6,6 +6,9 @@ plugins {
 }
 
 android {
+    // View Binding
+    buildFeatures { viewBinding true }
+
     defaultConfig {
         versionCode = 3
         versionName = "1.2"
@@ -40,9 +43,12 @@ android {
 }
 
 dependencies {
-    implementation project(":ui")
+    implementation project(':square-ui')
 
     kapt libs.hilt.compiler
-    implementation libs.appCompat
     implementation libs.hilt.android
+
+    implementation libs.appCompat
+    implementation libs.material
+    implementation libs.navigation
 }
