@@ -1,15 +1,20 @@
-package com.pierre.ui.motion
+package com.pierre.ui.square
 
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
+import androidx.core.net.toUri
 import androidx.core.view.updateLayoutParams
 import androidx.fragment.app.viewModels
+import androidx.navigation.NavDeepLinkRequest
+import androidx.navigation.fragment.findNavController
 import androidx.viewbinding.ViewBinding
+import com.pierre.ui.R
 import com.pierre.ui.base.BaseFragment
 import com.pierre.ui.databinding.FragmentMotionBinding
+import com.pierre.ui.report.ReportFragment
 import com.pierre.ui.utils.AnimationUtils
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -93,16 +98,13 @@ class SquareFragment : BaseFragment() {
         return true
     }
 
-    private val animation by lazy { AnimationUtils.blink(binding.exceededBoundOutline) }
-
     private fun exceededBounds() {
-        if (!animation.hasStarted() || animation.hasEnded()) {
-            binding.exceededBoundOutline.startAnimation(animation)
-            motionViewModel.exceededBounds()
+       if (!motionViewModel.hasExceededBounds()) {
+            binding.exceededBoundOutline.startAnimation(AnimationUtils.blink(binding.exceededBoundOutline))
+            motionViewModel.onExceededBounds()
         }
     }
 
-    // todo comment and maybe move to vm
     private fun onActionUp(): Boolean {
         motionViewModel.stopCapture()
         return true
@@ -132,10 +134,11 @@ class SquareFragment : BaseFragment() {
     }
 
     private fun displayData() {
-        context?.also { motionViewModel.show(it) }
+        val request = NavDeepLinkRequest.Builder
+            .fromUri(ReportFragment.DEEPLINK_URI.toUri())
+            .build()
+        findNavController().navigate(request)
     }
-
-    // todo could be nice to also record that the gesture went out of screen
 
     companion object {
         const val BUNDLE_SQUARE_SIZE_KEY = "BUNDLE_SQUARE_SIZE"

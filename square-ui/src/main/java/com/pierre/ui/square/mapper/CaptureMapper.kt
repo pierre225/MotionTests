@@ -1,11 +1,11 @@
-package com.pierre.ui.mapper
+package com.pierre.ui.square.mapper
 
 import com.pierre.domain.models.DomainMotion
 import com.pierre.domain.models.DomainPosition
-import com.pierre.ui.models.CapturedMotion
-import com.pierre.ui.models.CapturedPosition
+import com.pierre.ui.square.models.CapturedMotion
+import com.pierre.ui.square.models.CapturedPosition
 
-class UiMapper {
+class CaptureMapper {
 
     fun toDomain(capturedMotion: CapturedMotion) = DomainMotion(
         positions = capturedMotion.positions.map { toDomainPosition(it) },

@@ -6,12 +6,11 @@ import android.view.View
 import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.fragment.navArgs
 import androidx.viewbinding.ViewBinding
 import com.pierre.motiontest.R
 import com.pierre.motiontest.base.BaseFragment
 import com.pierre.motiontest.databinding.FragmentMotionTestsBinding
-import com.pierre.ui.motion.SquareFragment
+import com.pierre.ui.square.SquareFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 /**

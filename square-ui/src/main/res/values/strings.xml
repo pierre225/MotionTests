@@ -1,4 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="retry">Retry</string>
+    <string name="generic_error">Oops, something went wrong…</string>
+    <string name="reporting_error">Reporting error, please try again</string>
+    <string name="date">Date: %1$s</string>
+    <string name="duration">Duration: %1$f s</string>
+    <string name="recorded_positions">Recorded positions: %1$d </string>
 
 </resources>

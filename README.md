@@ -1,4 +1,4 @@
-## Hours spent : 4
+## Hours spent : 10
 
 # The Motion Tests app !
 This application contains a list of motion tests that can be performed by a user !
@@ -52,8 +52,10 @@ A local storing library allowing us to use SQL database for our local data. My i
 
 todo : 
 display data
+tests
 
 Nice to have :
+The square XY and touch XY should be presented in a real list
 Some analytics with firebase or other
 considering we save the motion we could have a feature to replay a motion
 The test module could be in another repo and retrieved via maven
@@ -62,4 +64,7 @@ Don't forget to test at the end :
 Make sure we track the finger x,y and not the square xy
 Adaptive theme
 rotation screen behavior
+test errors states
+
+
 

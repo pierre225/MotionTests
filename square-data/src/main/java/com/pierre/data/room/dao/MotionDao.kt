@@ -1,5 +1,6 @@
 package com.pierre.data.room.dao
 
+import androidx.paging.PagingSource
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
@@ -13,6 +14,5 @@ interface MotionDao {
     suspend fun insertMotion(motion: DataMotion)
 
     @Query("SELECT * FROM motions")
-    suspend fun getMotions(): List<DataMotion>
-
+    fun getPagedMotions(): PagingSource<Int, DataMotion>
 }
