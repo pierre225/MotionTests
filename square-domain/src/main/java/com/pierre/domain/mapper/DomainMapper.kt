@@ -1,5 +1,7 @@
 package com.pierre.domain.mapper
 
+import androidx.paging.PagingData
+import androidx.paging.map
 import com.pierre.data.repository.models.DataMotion
 import com.pierre.data.repository.models.DataPosition
 import com.pierre.domain.models.DomainMotion
@@ -38,5 +40,8 @@ class DomainMapper {
             touchY = domainPosition.touchY,
             timestamp = domainPosition.timestamp
         )
+
+    fun mapPagingDataToDomain(pagingData: PagingData<out DataMotion>) =
+        pagingData.map { toDomain(it) }
 
 }

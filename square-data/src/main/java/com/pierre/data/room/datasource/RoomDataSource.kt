@@ -1,5 +1,6 @@
 package com.pierre.data.room.datasource
 
+import androidx.paging.PagingSource
 import com.pierre.data.repository.models.DataMotion
 import com.pierre.data.room.dao.MotionDao
 
@@ -7,7 +8,7 @@ interface RoomDataSource {
 
     suspend fun insertMotion(motion: DataMotion)
 
-    suspend fun getMotions(): List<DataMotion>
+    fun getPagedMotions(): PagingSource<Int, DataMotion>
 }
 
 internal class RoomDataSourceImpl(
@@ -18,6 +19,6 @@ internal class RoomDataSourceImpl(
         motionDao.insertMotion(motion)
     }
 
-    override suspend fun getMotions(): List<DataMotion> = motionDao.getMotions()
+    override fun getPagedMotions() = motionDao.getPagedMotions()
 
 }

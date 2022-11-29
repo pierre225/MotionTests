@@ -1,4 +1,4 @@
-package com.pierre.ui.models
+package com.pierre.ui.square.models
 
 data class CapturedPosition(
     val squareX: Float,

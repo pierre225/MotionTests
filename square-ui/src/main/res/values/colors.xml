@@ -3,8 +3,11 @@
     <!--  ideally we defined a palette and reuse the same colors as much as possible  -->
     <color name="background_color">#FFFFFF</color>
     <color name="square_color">#000000</color>
+    <color name="text_color">#000000</color>
     <color name="buttons_background_color">#AAAAAA</color>
     <color name="button_icon_color">#000000</color>
     <color name="exceeded_bound_outline_color">#ff5555</color>
+    <color name="valid_color">#22ff22</color>
+    <color name="invalid_color">#ff5555</color>
 
 </resources>

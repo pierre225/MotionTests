@@ -10,16 +10,20 @@
       android:label="MotionTestsFragment" >
     <action
         android:id="@+id/motionTestsToSquare"
-        app:launchSingleTop="true"
-        app:popUpToInclusive="true"
-        app:popUpTo="@+id/nav_graph"
         app:destination="@id/squareFragment" />
   </fragment>
 
   <fragment
       android:id="@+id/squareFragment"
-      android:name="com.pierre.ui.motion.SquareFragment"
-      android:label="SquareFragment" >
+      android:name="com.pierre.ui.square.SquareFragment"
+      android:label="SquareFragment">
+  </fragment>
+
+  <fragment
+      android:id="@+id/reportFragment"
+      android:name="com.pierre.ui.report.ReportFragment"
+      android:label="ReportFragment">
+    <deepLink app:uri="movingsquare://com.pierre.square/report" />
   </fragment>
 
 </navigation>

@@ -1,4 +1,4 @@
-package com.pierre.ui.models
+package com.pierre.ui.square.models
 
 data class CapturedMotion(
     var positions: MutableList<CapturedPosition> = mutableListOf(),

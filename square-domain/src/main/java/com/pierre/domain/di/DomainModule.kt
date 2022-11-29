@@ -3,7 +3,7 @@ package com.pierre.domain.di
 import com.pierre.data.repository.MotionRepository
 import com.pierre.domain.mapper.DomainMapper
 import com.pierre.domain.usecases.GetMotionsUseCase
-import com.pierre.domain.usecases.GetMotionsUseCaseImpl
+import com.pierre.domain.usecases.GetPagedMotionsUseCaseImpl
 import com.pierre.domain.usecases.InsertMotionUseCase
 import com.pierre.domain.usecases.InsertMotionUseCaseImpl
 import dagger.Module
@@ -28,5 +28,5 @@ object DomainModule {
     fun getMotionsUseCase(
         repository: MotionRepository,
         mapper: DomainMapper,
-    ): GetMotionsUseCase = GetMotionsUseCaseImpl(repository, mapper)
+    ): GetMotionsUseCase = GetPagedMotionsUseCaseImpl(repository, mapper)
 }
