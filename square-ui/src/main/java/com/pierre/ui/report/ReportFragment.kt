@@ -2,17 +2,14 @@ package com.pierre.ui.report
 
 import android.app.AlertDialog
 import android.os.Bundle
-import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
-import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.viewbinding.ViewBinding
-import com.google.android.material.snackbar.Snackbar
 import com.pierre.ui.base.BaseFragment
 import com.pierre.ui.databinding.FragmentReportBinding
 import com.pierre.ui.report.adapter.ReportAdapter
@@ -70,14 +67,14 @@ class ReportFragment : BaseFragment() {
             .show()
     }
 
-    companion object {
-        const val DEEPLINK_URI = "movingsquare://com.pierre.square/report"
-    }
-
     private fun configureRecyclerView() {
         binding.reports.apply {
             adapter = ReportAdapter(::onReportClicked)
             addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
         }
+    }
+
+    companion object {
+        const val DEEPLINK_URI = "movingsquare://com.pierre.square/report"
     }
 }

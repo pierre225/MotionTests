@@ -1,17 +1,19 @@
 package com.pierre.ui.report.mapper
 
+import androidx.paging.PagingData
+import androidx.paging.map
 import com.pierre.domain.models.DomainMotion
 import com.pierre.domain.models.DomainPosition
 import com.pierre.ui.report.models.ReportMotion
 import com.pierre.ui.report.models.ReportPosition
-import com.pierre.ui.square.models.CapturedMotion
-import com.pierre.ui.square.models.CapturedPosition
 import com.pierre.ui.utils.DateUtils
-import java.time.format.DateTimeFormatter
 
 class ReportMapper {
 
-    fun toReport(domainMotion: DomainMotion) = ReportMotion(
+    fun mapPagingDataToReport(pagingData: PagingData<DomainMotion>) =
+        pagingData.map { toReport(it) }
+
+    private fun toReport(domainMotion: DomainMotion) = ReportMotion(
         date = DateUtils.convertLongToTime(domainMotion.startTime),
         duration = duration(domainMotion),
         exceeded = domainMotion.exceeded,

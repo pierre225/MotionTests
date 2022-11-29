@@ -2,7 +2,6 @@ package com.pierre.ui.report
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import androidx.paging.map
 import com.pierre.domain.usecases.GetMotionsUseCase
 import com.pierre.ui.report.mapper.ReportMapper
 import com.pierre.ui.report.models.ReportState
@@ -11,6 +10,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -45,8 +45,9 @@ class ReportViewModel @Inject constructor(
      */
     private suspend fun getPagingMotions() {
         getMotionsUseCase.invoke()
+            .map { mapper.mapPagingDataToReport(it) }
             .collectLatest { data ->
-                _state.emit(ReportState.ReportResultsState(data.map { mapper.toReport(it)}))
+                _state.emit(ReportState.ReportResultsState(data))
             }
     }
 

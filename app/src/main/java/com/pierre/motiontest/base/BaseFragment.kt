@@ -37,13 +37,4 @@ abstract class BaseFragment: Fragment() {
 
         return baseBinding.root
     }
-
-    /**
-     * Shows or hides a loader at the bottom of the screen
-     */
-    protected fun displayLoading(display: Boolean) {
-        baseBinding.baseLoader.visibility =
-            if (display) View.VISIBLE else View.GONE
-    }
-
 }

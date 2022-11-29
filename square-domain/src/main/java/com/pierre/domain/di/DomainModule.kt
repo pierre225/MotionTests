@@ -3,8 +3,6 @@ package com.pierre.domain.di
 import com.pierre.data.repository.MotionRepository
 import com.pierre.domain.mapper.DomainMapper
 import com.pierre.domain.usecases.*
-import com.pierre.domain.usecases.GetPagedMotionsUseCaseImpl
-import com.pierre.domain.usecases.InsertMotionUseCaseImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

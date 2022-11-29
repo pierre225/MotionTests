@@ -9,4 +9,9 @@ dependencies {
     implementation project(':square-data')
     kapt libs.hilt.compiler
     implementation libs.hilt.android
-    implementation libs.paging.common}
+    implementation libs.paging.common
+
+    testImplementation libs.testing.mockk
+    testImplementation libs.testing.junit
+    testImplementation libs.testing.coroutines
+}
