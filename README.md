@@ -57,7 +57,7 @@ A local storing library allowing us to use SQL database for our local data. My i
 
 ### Improvment / Nice to have (if more time :) )
 - The UI right... ?
-- The square modules (ui, domain and data) are thought as to be a separated library, we should be able to upload them and retrieved (via maven for instance) it in different client apps
+- The square modules (ui, domain and data) are thought as to be a separated library, we should be able to upload them and retrieve it (via maven for instance) in different client apps
 - The theming is only including light and dark mode, we could add some accessibility themes (for users that would need very contrasted colors)
 - We could add some analytics libs in order to aggregate data (Firebase...)
 - Configure a CI/CD env that would run the test and deploy the app (Or only a module)
@@ -68,9 +68,11 @@ A local storing library allowing us to use SQL database for our local data. My i
 - The app should be forced in landscape or portrait, if you mix both you can enter in weird states
 - Some codestyle for readability and consistency
 - Lint checks to avois mistakes
-- More UI and Unit tests
 - Test room using https://developer.android.com/training/data-storage/room/testing-db
 - The error management is really basic
+- More Unit tests
+- UI tests, I don't have enough time to implement UI tests but it would make a lot of sense in the square module to check that everything is happening normally when we move the square or hit a border
+- We could have also tested the square module integration within the app, checking we can configure it properly from the app (configure the square size)
 
 Thank you for your time, reading this and the code!!!
 

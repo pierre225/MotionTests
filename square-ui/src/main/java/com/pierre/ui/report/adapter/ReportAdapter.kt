@@ -8,7 +8,7 @@ import com.pierre.ui.report.viewholder.ReportViewHolder
 
 /**
  * Reports paging adapter
- * 2 reports are considered the same if their startTime is the same
+ * 2 reports are considered the same if their date is the same
  */
 class ReportAdapter(onItemClick: ((ReportMotion) -> Unit)) :
     BasePagingAdapter<ReportMotion>(onItemClick, diffCallback) {

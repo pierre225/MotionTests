@@ -2,7 +2,6 @@ package com.pierre.ui.utils
 
 import com.pierre.ui.R
 import com.pierre.ui.report.exceptions.ReportException
-import java.io.IOException
 
 /**
  * Utils class to help us handle exceptions

@@ -4,26 +4,25 @@
     android:id="@+id/nav_graph"
     app:startDestination="@id/motionTestsFragment">
 
-  <fragment
-      android:id="@+id/motionTestsFragment"
-      android:name="com.pierre.motiontest.motionTests.MotionTestsFragment"
-      android:label="MotionTestsFragment" >
-    <action
-        android:id="@+id/motionTestsToSquare"
-        app:destination="@id/squareFragment" />
-  </fragment>
+    <fragment
+        android:id="@+id/motionTestsFragment"
+        android:name="com.pierre.motiontest.motionTests.MotionTestsFragment"
+        android:label="MotionTestsFragment">
+        <action
+            android:id="@+id/motionTestsToSquare"
+            app:destination="@id/squareFragment" />
+    </fragment>
 
-  <fragment
-      android:id="@+id/squareFragment"
-      android:name="com.pierre.ui.square.SquareFragment"
-      android:label="SquareFragment">
-  </fragment>
+    <fragment
+        android:id="@+id/squareFragment"
+        android:name="com.pierre.ui.square.SquareFragment"
+        android:label="SquareFragment"></fragment>
 
-  <fragment
-      android:id="@+id/reportFragment"
-      android:name="com.pierre.ui.report.ReportFragment"
-      android:label="ReportFragment">
-    <deepLink app:uri="movingsquare://com.pierre.square/report" />
-  </fragment>
+    <fragment
+        android:id="@+id/reportFragment"
+        android:name="com.pierre.ui.report.ReportFragment"
+        android:label="ReportFragment">
+        <deepLink app:uri="movingsquare://com.pierre.square/report" />
+    </fragment>
 
 </navigation>

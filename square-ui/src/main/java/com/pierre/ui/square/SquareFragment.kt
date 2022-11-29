@@ -53,6 +53,7 @@ class SquareFragment : BaseFragment() {
             displayDataButton.setOnClickListener { displayData() }
         }
 
+        // Check if there is a last position of the square
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 launch {
@@ -92,6 +93,10 @@ class SquareFragment : BaseFragment() {
         }
     }
 
+    /**
+     * The touch has started
+     * Start the capture
+     */
     private fun onActionDown(event: MotionEvent): Boolean {
         dX = binding.square.x - event.rawX
         dY = binding.square.y - event.rawY
@@ -101,6 +106,16 @@ class SquareFragment : BaseFragment() {
     }
 
     /**
+     * The touch has stopped
+     * Stop the capture
+     */
+    private fun onActionUp(): Boolean {
+        squareViewModel.stopCapture()
+        return true
+    }
+
+    /**
+     * The touch is moving
      * Moves the squares to the new position if it is within the screen
      */
     private fun onActionMove(event: MotionEvent): Boolean {
@@ -118,11 +133,6 @@ class SquareFragment : BaseFragment() {
             binding.exceededBoundOutline.startAnimation(AnimationUtils.blink(binding.exceededBoundOutline))
             squareViewModel.onExceededBounds()
         }
-    }
-
-    private fun onActionUp(): Boolean {
-        squareViewModel.stopCapture()
-        return true
     }
 
     override fun onPause() {
@@ -150,6 +160,7 @@ class SquareFragment : BaseFragment() {
             .start()
     }
 
+    // Goes to the report page via a deeplink
     private fun displayData() {
         val request = NavDeepLinkRequest.Builder
             .fromUri(ReportFragment.DEEPLINK_URI.toUri())
