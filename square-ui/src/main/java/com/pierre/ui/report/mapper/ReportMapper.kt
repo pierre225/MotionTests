@@ -19,7 +19,7 @@ class ReportMapper {
         positions = domainMotion.positions.map { toReportPosition(it) }
     )
 
-    private fun toReportPosition(domainPosition: DomainPosition) = ReportPosition(
+    fun toReportPosition(domainPosition: DomainPosition) = ReportPosition(
         squareX = domainPosition.squareX,
         squareY = domainPosition.squareY,
         touchX = domainPosition.touchX,

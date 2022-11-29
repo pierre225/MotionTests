@@ -8,22 +8,26 @@ import android.view.View
 import androidx.core.net.toUri
 import androidx.core.view.updateLayoutParams
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.NavDeepLinkRequest
 import androidx.navigation.fragment.findNavController
 import androidx.viewbinding.ViewBinding
-import com.pierre.ui.R
 import com.pierre.ui.base.BaseFragment
-import com.pierre.ui.databinding.FragmentMotionBinding
+import com.pierre.ui.databinding.FragmentSquareBinding
 import com.pierre.ui.report.ReportFragment
 import com.pierre.ui.utils.AnimationUtils
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class SquareFragment : BaseFragment() {
 
-    private val motionViewModel: SquareViewModel by viewModels()
+    private val squareViewModel: SquareViewModel by viewModels()
 
-    private lateinit var binding: FragmentMotionBinding
+    private lateinit var binding: FragmentSquareBinding
 
     // The square can be moved in the whole screen (even on top of buttons)
     private val MIN_X by lazy { binding.root.x }
@@ -35,7 +39,7 @@ class SquareFragment : BaseFragment() {
     private var dY = 0f
 
     override fun initBinding(inflater: LayoutInflater): ViewBinding {
-        binding = FragmentMotionBinding.inflate(inflater)
+        binding = FragmentSquareBinding.inflate(inflater)
         return binding
     }
 
@@ -48,6 +52,18 @@ class SquareFragment : BaseFragment() {
             centerSquareButton.setOnClickListener { centerSquare() }
             displayDataButton.setOnClickListener { displayData() }
         }
+
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                launch {
+                    squareViewModel.lastSavedPosition.collectLatest {
+                        animateSquare(it.squareX, it.squareY)
+                    }
+                }
+            }
+        }
+
+        squareViewModel.getLastPosition()
     }
 
     /**
@@ -76,12 +92,11 @@ class SquareFragment : BaseFragment() {
         }
     }
 
-    // todo comment
     private fun onActionDown(event: MotionEvent): Boolean {
         dX = binding.square.x - event.rawX
         dY = binding.square.y - event.rawY
 
-        motionViewModel.startCapture()
+        squareViewModel.startCapture()
         return true
     }
 
@@ -94,41 +109,43 @@ class SquareFragment : BaseFragment() {
         if (newX in MIN_X..MAX_X) binding.square.x = newX else exceededBounds()
         if (newY in MIN_Y..MAX_Y) binding.square.y = newY else exceededBounds()
 
-        motionViewModel.addPosition(newX, newY, event.rawX, event.rawY)
+        squareViewModel.addPosition(binding.square.x, binding.square.y, event.rawX, event.rawY)
         return true
     }
 
     private fun exceededBounds() {
-       if (!motionViewModel.hasExceededBounds()) {
+       if (!squareViewModel.hasExceededBounds()) {
             binding.exceededBoundOutline.startAnimation(AnimationUtils.blink(binding.exceededBoundOutline))
-            motionViewModel.onExceededBounds()
+            squareViewModel.onExceededBounds()
         }
     }
 
     private fun onActionUp(): Boolean {
-        motionViewModel.stopCapture()
+        squareViewModel.stopCapture()
         return true
     }
 
     override fun onPause() {
-        motionViewModel.stopCapture()
+        squareViewModel.stopCapture()
         super.onPause()
     }
 
     override fun onDestroy() {
-        motionViewModel.stopCapture()
+        squareViewModel.stopCapture()
         super.onDestroy()
     }
 
     private fun centerSquare() {
         val centerX = (binding.root.width / 2f) - binding.square.width / 2f
         val centerY = (binding.root.height / 2f) - binding.square.height / 2f
+        animateSquare(centerX, centerY)
+    }
 
+    private fun animateSquare(x: Float, y: Float) {
         binding.square
             .animate()
-            .x(centerX)
-            .y(centerY)
-            .y(centerY)
+            .x(x)
+            .y(y)
             .setDuration(CENTER_SQUARE_ANIMATION_DURATION)
             .start()
     }

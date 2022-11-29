@@ -24,14 +24,13 @@ class ReportViewModel @Inject constructor(
     val state: StateFlow<ReportState> = _state
 
     /**
-     * Tries to retrieved the paged songs update the state accordingly
+     * Tries to retrieved the paged motions update the state accordingly
      */
     fun getMotions() {
         viewModelScope.launch {
             // initialize with a loading state
             _state.emit(ReportState.ReportLoadingState)
 
-            //todo maybe not here the error managing ?
             try {
                 getPagingMotions()
             } catch (e: Exception) {
@@ -41,8 +40,8 @@ class ReportViewModel @Inject constructor(
     }
 
     /**
-     * Use the getSongsUseCase in order to get the flow of PagingData of Domain song
-     * Then map the domain song, collect the flow and emit in as a successful result
+     * Use the getPagingMotions in order to get the flow of PagingData of reports
+     * Then map it, collect the flow and emit in as a successful result
      */
     private suspend fun getPagingMotions() {
         getMotionsUseCase.invoke()

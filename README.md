@@ -1,4 +1,4 @@
-## Hours spent : 10
+## Hours spent : 11
 
 # The Motion Tests app !
 This application contains a list of motion tests that can be performed by a user !
@@ -39,6 +39,14 @@ In order to respect the "separation of concerns" concept and to make the tests e
 - The domain module, supposed to encapsulate business logic (not so important in this current app as it is very simple but still!).
 - The ui module, displaying the data on the screen, containing all the Android specific related code.
 
+### Dynamic themes
+The app supports dynamic theming the light and dark theme will be updated according to the device theme
+
+### Flow
+I chose to use Kotlin Flow (over live data / Rx) for async tasks.
+I prefer Flow over LiveData mostly because LiveData is bound to Android while we can use Flow everywhere as it comes from Kotlin (like in our domain and data modules).
+Rx is a great reactive solution too, I simply had to make a choice ;)
+
 ## Libraries
 
 ### Hilt
@@ -47,23 +55,36 @@ Hilt (dagger) for the dependency injection, reducing boilerplate code and making
 ### Room
 A local storing library allowing us to use SQL database for our local data. My implementation may not be perfect as I never had the opportunity to use it before!
 
+### Improvment / Nice to have (if more time :) )
+- The UI right... ?
+- The square modules (ui, domain and data) are thought as to be a separated library, we should be able to upload them and retrieved (via maven for instance) it in different client apps
+- The theming is only including light and dark mode, we could add some accessibility themes (for users that would need very contrasted colors)
+- We could add some analytics libs in order to aggregate data (Firebase...)
+- Configure a CI/CD env that would run the test and deploy the app (Or only a module)
+- A keystore strategy, handled by the CI/CD
+- The square / touch XY reports are only displayed in a dialog and not well presented / formatted
+- Considering we save all the square XY, we could have a replay feature that would replay a whole motion
+- Some of the square position calculation currently done in the SquareFragment could be moved to the SquareViewModel
+- The app should be forced in landscape or portrait, if you mix both you can enter in weird states
+- Some codestyle for readability and consistency
+- Lint checks to avois mistakes
+- More UI and Unit tests
+- Test room using https://developer.android.com/training/data-storage/room/testing-db
+- The error management is really basic
+
+Thank you for your time, reading this and the code!!!
+
 
 # WIP
 
 todo : 
-display data
 tests
+faire une release 1.0
 
 Nice to have :
-The square XY and touch XY should be presented in a real list
-Some analytics with firebase or other
-considering we save the motion we could have a feature to replay a motion
-The test module could be in another repo and retrieved via maven
+
 
 Don't forget to test at the end :
-Make sure we track the finger x,y and not the square xy
-Adaptive theme
-rotation screen behavior
 test errors states
 
 
