@@ -11,7 +11,7 @@ android {
 
     defaultConfig {
         versionCode = 1
-        versionName = "1.0"
+        versionName = "0.1"
         defaultConfig { testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner" }
     }
 
@@ -51,4 +51,9 @@ dependencies {
     implementation libs.appCompat
     implementation libs.material
     implementation libs.navigation
+
+    androidTestImplementation libs.androidTesting.testCore
+    androidTestImplementation libs.androidTesting.espresso
+    androidTestImplementation libs.androidTesting.hilt
+    androidTestImplementation libs.androidTesting.extJunit
 }
