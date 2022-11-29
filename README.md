@@ -1,4 +1,4 @@
-## Hours spent : 11
+## Hours spent : 16
 
 # The Motion Tests app !
 This application contains a list of motion tests that can be performed by a user !
@@ -8,6 +8,7 @@ Each test is in its own module so the host app can import it or not. (For this d
 The moving square test lets the user move a 70*70px square on the screen while recording:
 * The positions of touches points
 * Whether or not the square touched a border of the screen
+* There is a report screen where you can check if the motion hit a border, the duration and the number of points recorded. You can also open a dialog with all the square and touch XY.
 
 ## Working flow
 ### Git Flow
@@ -55,12 +56,20 @@ Hilt (dagger) for the dependency injection, reducing boilerplate code and making
 ### Room
 A local storing library allowing us to use SQL database for our local data. My implementation may not be perfect as I never had the opportunity to use it before!
 
+### MockK
+MockK in order to mock classes while testing. (Alternative: Mockito)
+
+### Espresso
+Espresso to UI test the app, unfortunately I didn't have enough time to implement proper UI tests, I only set up en environment...
+You can find a basic UI test in java/com/pierre/motiontest/AppUiTests.kt
+
 ### Improvment / Nice to have (if more time :) )
 - The UI right... ?
 - The square modules (ui, domain and data) are thought as to be a separated library, we should be able to upload them and retrieve it (via maven for instance) in different client apps
 - The theming is only including light and dark mode, we could add some accessibility themes (for users that would need very contrasted colors)
 - We could add some analytics libs in order to aggregate data (Firebase...)
 - Configure a CI/CD env that would run the test and deploy the app (Or only a module)
+- Alpha, Beta... channels to deploy to different sets of users
 - A keystore strategy, handled by the CI/CD
 - The square / touch XY reports are only displayed in a dialog and not well presented / formatted
 - Considering we save all the square XY, we could have a replay feature that would replay a whole motion
@@ -75,19 +84,6 @@ A local storing library allowing us to use SQL database for our local data. My i
 - We could have also tested the square module integration within the app, checking we can configure it properly from the app (configure the square size)
 
 Thank you for your time, reading this and the code!!!
-
-
-# WIP
-
-todo : 
-tests
-faire une release 1.0
-
-Nice to have :
-
-
-Don't forget to test at the end :
-test errors states
 
 
 
