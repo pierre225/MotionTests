@@ -22,6 +22,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/spacing_normal"
         android:background="@color/buttons_background_color"
+        android:foreground="?attr/selectableItemBackground"
         android:padding="@dimen/spacing_x_large"
         android:text="@string/moving_square" />
 
@@ -31,6 +32,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/spacing_normal"
         android:background="@color/buttons_background_color"
+        android:foreground="?attr/selectableItemBackground"
         android:padding="@dimen/spacing_x_large"
         android:text="@string/test2" />
 
@@ -40,6 +42,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/spacing_normal"
         android:background="@color/buttons_background_color"
+        android:foreground="?attr/selectableItemBackground"
         android:padding="@dimen/spacing_x_large"
         android:text="@string/test3" />
 

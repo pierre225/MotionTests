@@ -23,7 +23,7 @@ class DomainMapper {
         exceeded = domainMotion.exceeded
     )
 
-    private fun toDomainPosition(dataPosition: DataPosition) =
+    fun toDomainPosition(dataPosition: DataPosition) =
         DomainPosition(
             squareX = dataPosition.squareX,
             squareY = dataPosition.squareY,
